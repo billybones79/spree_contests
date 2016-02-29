@@ -1,0 +1,26 @@
+<%= button_link_to Spree.t(:new_contest), new_admin_contest_path, { :class => "btn-success", :icon => 'add', :id => 'admin_new_contest' } %>
+
+<% if @contests.any? %>
+    <table class="table" id='listing_stock_locations' data-hook>
+      <thead>
+      <tr data-hook="stock_locations_header">
+        <th><%= Spree.t(:date_begin) %></th>
+        <th><%= t(:date_end) %></th>
+        <th><%= Spree.t(:name) %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @contests.each do |contest| %>
+          <tr>
+            <td><%= contest.date_begin %></td>
+            <td><%= contest.date_end %></td>
+            <td><%= link_to contest.name, admin_contest_path(contest)  %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found) %>
+    </div>
+<% end %>

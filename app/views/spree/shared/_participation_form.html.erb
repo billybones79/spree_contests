@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="content_box">
+
+    <section class="section">
+
+      <div class="content_section">
+
+
+        <%= form_for [@contest, @participation], remote: true do |f| %>
+
+
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :zip %>
+              <%= f.text_field :zip, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :terms %>
+              <%= check_box_tag "termes", :terms, class: 'form-control' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+
+        <% end %>
+      </div>
+    </section>
+  </div>
+</div>

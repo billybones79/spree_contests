@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="container">
+
+
+      <h3><%= @contest.name %></h3>
+
+      <div class="description">
+        <%= @contest.description %>
+        <%= render :partial => 'spree/shared/participation_form' %>
+      </div>
+    <div style="display:none" id="subscribe">
+    </div>
+  </div>
+</div>
