@@ -1,4 +1,5 @@
 ready = function(){
+    $(".next_step").unbind('click');
     $(".next_step").click(function(e){
         e.preventDefault();
         var parent = $(this).parents(".step")
