@@ -3,10 +3,11 @@ $(".contest").html("<%=j render :partial => 'spree/shared/participation_confirm'
 
 
 $("#share").click(function(e){
+    var urlpost = $(this).data('href') ;
     e.preventDefault();
     FB.ui({
         method: 'share',
-        href: window.location
+        href: urlpost
     }, function(response){
 
     });
