@@ -6,14 +6,16 @@ class CreateContests < ActiveRecord::Migration
       t.string  :slug
       t.date :date_begin, null: false
       t.date :date_end, null: false
-      t.text  :description
+      t.text  :terms_link
+      t.text  :mailchimp_api_key
+      t.text  :mailchimp_list_id
       t.timestamps null: false
     end
     create_table :spree_participations do |t|
       t.string      :name
       t.string      :email
       t.string      :zip
-      t.boolean        :subscribed
+      t.boolean     :subscribed
       t.references  :contest
       t.timestamps  null: false
     end

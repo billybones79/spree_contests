@@ -7,8 +7,7 @@
       </div>
 
       <div class="description">
-        <%= @contest.description %>
-        <%= render :partial => 'spree/shared/participation_form' %>
+        <%= render :partial => 'spree/shared/participation_form', :locals =>{contest: @contest} %>
       </div>
     <div style="display:none" id="subscribe">
     </div>

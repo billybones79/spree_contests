@@ -9,15 +9,33 @@
           <%= text_field :contest, :name, :class => 'form-control' %>
       <% end %>
     </div>
-
-
-    <div class="col-md-4" data-hook="admin_product_form_right">
-      <%= f.field_container :description do %>
-          <%= f.label :description, Spree.t(:description) %> <span class="required">*</span><br />
-          <%= error_message_on :description, :description %>
-          <%= f.text_area  :description, :class => 'form-control' %>
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= f.field_container :mailchimp_api_key, class: ['form-group'] do %>
+          <%= f.label :mailchimp_api_key, Spree.t(:mailchimp_api_key) %> <span class="required">*</span><br />
+          <%= error_message_on :mailchimp_api_key, :mailchimp_api_key %>
+          <%= text_field :contest, :mailchimp_api_key, :class => 'form-control' %>
       <% end %>
-      </div>
+    </div>
+    </div>
+
+  <div class="row">
+
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= f.field_container :mailchimp_list_id, class: ['form-group'] do %>
+          <%= f.label :mailchimp_list_id, Spree.t(:mailchimp_list_id) %> <span class="required">*</span><br />
+          <%= error_message_on :mailchimp_list_id, :mailchimp_list_id %>
+          <%= text_field :contest, :mailchimp_list_id, :class => 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= f.field_container "Page des termes et conditions", class: ['form-group'] do %>
+          <%= f.label :terms_link, Spree.t(:terms_link) %> <span class="required">*</span><br />
+          <%= error_message_on :terms_link, :terms_link %>
+          <%= text_field :contest, :terms_link, :class => 'form-control' %>
+      <% end %>
+    </div>
+
   </div>
   <div id="date_begin" class="form-group">
     <%= f.label :date_begin %>

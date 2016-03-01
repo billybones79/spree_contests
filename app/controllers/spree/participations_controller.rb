@@ -9,24 +9,20 @@ module Spree
 
     def create
       puts "aaaaaaaa"
+      @contest = Spree::Contest.find(params[:contest_id])
       unless params[:terms]
         flash[:notice] = "vous n'avez pas accepté les termes"
         puts "pas de term"
-        respond_to do |format|
-          format.html { redirect_to(:back)and return }
-         end
+        redirect_to(:back) and return
+
       end
       @participation = Spree::Participation.new(participation_params)
-
+      @participation.contest = @contest
       unless @participation.save
         puts "unless"
-        flash[:notice] = "le formulaire a été mal rempli ou le email existe deja"
-        respond_to do |format|
-          format.html { redirect_to(:back)and return }
-        end
+        flash[:notice] = "le formulaire a été mal rempli ou le email est déjà entré."
+        redirect_to(:back) and return
       end
-
-      puts "assasasasasasasasasasasasasasasasasasasasasasas"
       respond_to do |format|
         format.html {}
         format.js {render :layout => false}
@@ -38,7 +34,7 @@ module Spree
 
 
     def participation_params
-      params.require(:participation).permit(:name, :email, :zip)
+      params.require(:participation).permit(:name, :email, :zip, :subscribed, :contest_id)
     end
 
 

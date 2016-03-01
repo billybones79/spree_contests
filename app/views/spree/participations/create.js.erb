@@ -1,2 +1,13 @@
-partial = "<%=j render :partial => 'spree/shared/subscribe', :format => :html, :locals => { :participation => @participation } %>"
-$("#subscribe").html(partial).show();
+$(".contest").html("<%=j render :partial => 'spree/shared/participation_confirm', :locals => { :participation => @participation } %>");
+
+
+
+$("#share").click(function(e){
+    e.preventDefault();
+    FB.ui({
+        method: 'share',
+        href: window.location
+    }, function(response){
+
+    });
+});

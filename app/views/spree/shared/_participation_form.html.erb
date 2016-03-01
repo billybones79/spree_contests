@@ -1,38 +1,126 @@
-<div class="container">
-  <div class="content_box">
 
-    <section class="section">
+<div class ="contest">
+  <%= form_for [contest, @participation], method: "post", remote: true do |f| %>
 
-      <div class="content_section">
+    <div class="step_1 step">
+      <div class="notice"></div>
+
+      <h4>Courez la chance de gagner</h4>
+      <h3>Un voyage pour 4</h3>
+      <p class="text">Au splash memories de Punta Cana en république Dominicaine<br />| Une valeur de 6000 $ |</p>
+
+      <h5>Inscription</h5>
+
+      <div class="clear">
+
+        <div class="field-row clear">
+
+          <div class="field-holder">
+
+            <%= f.label :name, "Nom et Prénom*"%>
+            <%= f.text_field :name, class: 'name'%>
+
+          </div>
+
+          <div class="field-holder last">
+
+            <%= f.label :email , "Courriel*" %>
+            <%= f.text_field :email, class: 'form-control' %>
 
 
-        <%= form_for [@contest, @participation],method: "post", remote: true do |f| %>
+          </div>
+
+        </div>
 
 
-            <div class="form-group">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control'%>
+        <div class="field-row clear">
+
+          <div class="field-holder">
+            <%= f.label :zip, "Code postal*" %>
+            <%= f.text_field :zip, class: 'form-control' %>
+          </div>
+
+          <div class="field-holder last">
+            <label>&nbsp;</label>
+            <div class="clear">
+
+              <div class="checkboxholder">
+                <input type="checkbox" name="terms" id="terms" value="1">
+                <label id="chk_newsletter" class="custom-checkbox" for="terms">
+                  <span></span>
+                </label>
+              </div>
+
+              <p class="left">J'ai lu et j'accepte les <%= link_to "règlements du concours", @contest.terms_link %><br />Fin du concours 1<sup>er</sup> avril 2016.</p>
             </div>
+          </div>
 
-            <div class="form-group">
-              <%= f.label :email %>
-              <%= f.text_field :email, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :zip %>
-              <%= f.text_field :zip, class: 'form-control' %>
-            </div>
-            <div class="form-group">
-              <%= f.label :terms %>
-              <%= check_box_tag "terms", :terms, class: 'form-control' %>
-            </div>
+        </div>
 
-            <div class="actions">
-              <%= f.submit %>
-            </div>
+        <div class="field-row clear">
 
-        <% end %>
+          <div class="field-holder">
+            <%= image_tag 'logo-michel-barette.png' %>
+          </div>
+
+          <div class="field-holder last">
+            <input type="submit" value="Étape suivante" class="next_step"/>
+          </div>
+
+        </div>
+
+      </div><!-- .clear -->
+
+    </div>
+
+    <div style="display: none;" class="step_2 step">
+      <div class="notice"></div>
+
+      <% if @contest.mailchimp_api_key && @contest.mailchimp_list_id %>
+
+      <h3>Obtenez des<br />chances supplémentaires<br />de gagner!</h3>
+
+      <div class="clear">
+
+        <div class="field-row clear">
+
+          <div class="field-holder info darkgreen full">
+            <div class="footer-socials clear">
+              <ul class="socials-menu">
+                <li><a href="#" class="facebook" target="_blank"><i class="fa fa-envelope"></i></a></li>
+              </ul>
+              <h3>En vous incrivant<br />à l'infolettre</h3>
+
+              <div class="checkboxholder">
+                <%= f.check_box :subscribed,  {class: 'form-control'}, "true" %>
+
+                <%= f.label :subscribed, {:class =>"custom-checkbox" } do %>
+                       <span></span>
+                <% end %>
+
+              </div>
+
+
+            <p>Soyez le premier informé<br />de l'identité du gagant!</p>
+          </div>
+
+        </div>
+
+        <div class="field-row clear">
+
+          <div class="field-holder full">
+            <%= f.submit "Participez" %>
+          </div>
+
+        </div>
+
       </div>
-    </section>
-  </div>
+      <% end %>
+
+
+    </div>
+    </div>
+
+<% end %>
 </div>
+
