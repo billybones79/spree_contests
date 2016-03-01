@@ -17,8 +17,8 @@ module Spree
 
       end
       @participation = Spree::Participation.new(participation_params)
+      @participation.subscribed = !(params[:subscribed].blank?)
       @participation.contest = @contest
-      @participation.subscribed = !(params[:commit] =="M'inscrire")
 
 
       unless @participation.save

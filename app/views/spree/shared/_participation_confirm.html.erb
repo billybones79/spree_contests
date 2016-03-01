@@ -3,7 +3,7 @@
   <div class="xlightgreen">
 
     <h3>Merci d'avoir participé!</h3>
-    <span>Vous avez <%= participation.subscribed ? "2" : "1" %> chances de gagner</span>
+    <span>Vous avez <%= participation.subscribed ? "2" : "1" %> chance<%= participation.subscribed ? "s" : "" %> de gagner</span>
     <div class="footer-socials">
       <ul class="socials-menu clear">
         <li><a href="https://www.facebook.com/modechoc" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -14,7 +14,7 @@
 
     <span id="share" data-href="<%= request.original_url %>" class="link">Partager</span>
 
-    <a title="COntinuer à magasiner" href="<% root_path %>" class="link red">Continuez sur <strong>modechoc.ca</strong></a>
+    <a title="Continuer à magasiner" href="<%= root_path %>" class="link red">Continuer sur <strong>modechoc.ca</strong></a>
 
   </div>
 
