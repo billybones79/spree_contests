@@ -10,7 +10,7 @@ module Spree
       [:name]
     end
     def generate_slug
-      slug = name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      self.slug = name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
     end
 
     def self.active_contest
