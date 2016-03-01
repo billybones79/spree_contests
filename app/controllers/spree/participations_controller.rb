@@ -18,6 +18,9 @@ module Spree
       end
       @participation = Spree::Participation.new(participation_params)
       @participation.contest = @contest
+      @participation.subscribed = !(params[:commit] =="M'inscrire")
+
+
       unless @participation.save
         puts "unless"
         flash[:notice] = "le formulaire a été mal rempli ou le email est déjà entré."
