@@ -12,6 +12,8 @@
         <th><%= Spree.t(:nom) %>
         <th><%= Spree.t(:email) %></th>
         <th><%= Spree.t(:zip) %></th>
+        <th><%= Spree.t(:infolettre) %></th>
+
       </tr>
       </thead>
       <tbody>
@@ -20,6 +22,8 @@
             <td><%= participation.name %></td>
             <td><%= participation.email %></td>
             <td><%= participation.zip %></td>
+            <td><%= participation.subscribed ? "oui", "non" %></td>
+
           </tr>
       <% end %>
       </tbody>
