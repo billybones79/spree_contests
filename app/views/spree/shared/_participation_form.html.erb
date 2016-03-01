@@ -6,7 +6,7 @@
       <div class="content_section">
 
 
-        <%= form_for [@contest, @participation], remote: true do |f| %>
+        <%= form_for [@contest, @participation],method: "post", remote: true do |f| %>
 
 
             <div class="form-group">
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
               <%= f.label :terms %>
-              <%= check_box_tag "termes", :terms, class: 'form-control' %>
+              <%= check_box_tag "terms", :terms, class: 'form-control' %>
             </div>
 
             <div class="actions">

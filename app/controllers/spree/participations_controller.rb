@@ -8,15 +8,28 @@ module Spree
     end
 
     def create
+      puts "aaaaaaaa"
       unless params[:terms]
         flash[:notice] = "vous n'avez pas accepté les termes"
-        redirect_to(:back)
+        puts "pas de term"
+        respond_to do |format|
+          format.html { redirect_to(:back)and return }
+         end
       end
       @participation = Spree::Participation.new(participation_params)
 
       unless @participation.save
-        flash[:notice] = "le formulaire a été mal rempli"
-        redirect_to(:back)
+        puts "unless"
+        flash[:notice] = "le formulaire a été mal rempli ou le email existe deja"
+        respond_to do |format|
+          format.html { redirect_to(:back)and return }
+        end
+      end
+
+      puts "assasasasasasasasasasasasasasasasasasasasasasas"
+      respond_to do |format|
+        format.html {}
+        format.js {render :layout => false}
       end
 
     end
