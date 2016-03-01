@@ -1,4 +1,4 @@
-$(document).ready(function(){
+ready = function(){
     $(".next_step").click(function(e){
         e.preventDefault();
         var parent = $(this).parents(".step")
@@ -6,4 +6,7 @@ $(document).ready(function(){
         parent.next().show();
 
     })
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
