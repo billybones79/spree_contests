@@ -14,6 +14,8 @@
         <th><%= Spree.t(:zip) %></th>
         <th><%= Spree.t(:infolettre) %></th>
 
+        <th class="actions"></th>
+
       </tr>
       </thead>
       <tbody>
@@ -23,6 +25,10 @@
             <td><%= participation.email %></td>
             <td><%= participation.zip %></td>
             <td><%= participation.subscribed ? "oui" : "non" %></td>
+            <td>
+              <%= link_to_delete(participation, no_text: true) %>
+            </td>
+
 
           </tr>
       <% end %>
