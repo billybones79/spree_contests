@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_contests'
-  s.version     = '3.0.88'
+  s.version     = '3.0.89'
   s.summary     = 'Adds a contest feature to spree'
   s.description = 'Adds contest to spree, with participation based on email'
   s.required_ruby_version = '>= 2.0.0'
