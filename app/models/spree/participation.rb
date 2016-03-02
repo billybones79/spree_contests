@@ -5,7 +5,8 @@ module Spree
     validates_uniqueness_of :email, :scope => :contest_id
     after_save :subscribe
 
-    canadian_postal_code = /\A[ABCEGHJKLMNPRSTVXY]{1}\\d{1}[A-Z]{1}[ -]?\\d{1}[A-Z]{1}\\d{1}\z/
+    before_validation :upcase_zip
+    canadian_postal_code = /\A[A-Z]{1}\\d{1}[A-Z]{1}[ -]?\\d{1}[A-Z]{1}\\d{1}\z/
     validates :zip, format: { with: canadian_postal_code }
 
     def subscribe
@@ -17,6 +18,9 @@ module Spree
                                   { "email" => self.email
                                   })
       end
+    end
+    def upcase_zip
+      self.zip = self.zip.downcase if self.zip.present?
     end
 
   end
