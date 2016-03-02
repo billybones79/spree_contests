@@ -20,7 +20,7 @@ module Spree
       end
     end
     def upcase_zip
-      self.zip = self.zip.downcase if self.zip.present?
+      self.zip = self.zip.upcase if self.zip.present?
     end
 
   end
