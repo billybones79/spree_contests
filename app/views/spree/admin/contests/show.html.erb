@@ -26,7 +26,8 @@
             <td><%= participation.zip %></td>
             <td><%= participation.subscribed ? "oui" : "non" %></td>
             <td>
-              <%= link_to_delete(participation, no_text: true) %>
+               <%= link_to 'Destroy', admin_contest_participation_path(@contest, participation),
+                           data: {:confirm => 'Are you sure?'}, :method => :delete %>
             </td>
 
 
