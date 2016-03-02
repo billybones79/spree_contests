@@ -5,6 +5,9 @@ module Spree
     validates_uniqueness_of :email, :scope => :contest_id
     after_save :subscribe
 
+    canadian_postal_code = /\A[ABCEGHJKLMNPRSTVXY]{1}\\d{1}[A-Z]{1}[ -]?\\d{1}[A-Z]{1}\\d{1}\z/
+    validates :zip, format: { with: canadian_postal_code }
+
     def subscribe
       puts subscribed
       if self.subscribed && self.contest.mailchimp_api_key && self.contest.mailchimp_list_id

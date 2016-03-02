@@ -10,7 +10,7 @@ module Spree
       def destroy
         @participation = Spree::Participation.find(params[:id])
         @contest = @participation.contest
-        @participation.dstory
+        @participation.destroy
         redirect_to admin_contest_path(@contest)
       end
 
