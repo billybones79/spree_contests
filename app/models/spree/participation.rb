@@ -6,7 +6,7 @@ module Spree
     after_save :subscribe
 
     before_validation :upcase_zip
-    canadian_postal_code = /\A[A-Z]{1}\\d{1}[A-Z]{1}[ -]?\\d{1}[A-Z]{1}\\d{1}\z/
+    canadian_postal_code = /^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/
     validates :zip, format: { with: canadian_postal_code }
 
     def subscribe
