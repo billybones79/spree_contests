@@ -2,7 +2,7 @@ module Spree
   class Contest < Spree::Base
     extend FriendlyId
     friendly_id :slug_candidates, use: [:slugged, :finders]
-    has_many :participations
+    has_many :participations, :dependent => :destroy
     before_save :generate_slug
 
 

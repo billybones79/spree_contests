@@ -16,15 +16,24 @@
           <%= text_field :contest, :mailchimp_api_key, :class => 'form-control' %>
       <% end %>
     </div>
-    </div>
-
-  <div class="row">
-
     <div class="col-md-4" data-hook="admin_product_form_left">
       <%= f.field_container :mailchimp_list_id, class: ['form-group'] do %>
           <%= f.label :mailchimp_list_id, Spree.t(:mailchimp_list_id) %> <span class="required">*</span><br />
           <%= error_message_on :mailchimp_list_id, :mailchimp_list_id %>
           <%= text_field :contest, :mailchimp_list_id, :class => 'form-control' %>
+      <% end %>
+    </div>
+
+    </div>
+
+  <div class="row">
+
+
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= f.field_container :slug, class: ['form-group'] do %>
+          <%= f.label :slug, Spree.t(:slug) %><br />
+          <%= error_message_on :slug, :slug %>
+          <%= text_field :contest, :slug, :class => 'form-control' %>
       <% end %>
     </div>
 

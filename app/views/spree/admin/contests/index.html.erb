@@ -7,6 +7,7 @@
         <th><%= Spree.t(:date_begin) %></th>
         <th><%= t(:date_end) %></th>
         <th><%= Spree.t(:name) %></th>
+        <th class="actions"></th>
       </tr>
       </thead>
       <tbody>
@@ -14,7 +15,11 @@
           <tr>
             <td><%= contest.date_begin %></td>
             <td><%= contest.date_end %></td>
-            <td><%= link_to contest.name, admin_contest_path(contest)  %> </td>
+            <td><%=  contest.name%> </td>
+            <td class="actions actions-2 text-right">
+              <%= link_to_edit(contest.id, class: 'admin_edit_option_type', no_text: true) %>
+              <%= link_to_delete(contest, no_text: true) %>
+            </td>
           </tr>
       <% end %>
       </tbody>
