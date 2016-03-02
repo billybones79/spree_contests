@@ -1,6 +1,6 @@
 module Spree
   module Admin
-    class ParticipationsController < ResourceController
+    class ParticipationController < ResourceController
 
       def index
         @contest = Spree::Contest.includes(:participations).find(params[:id])
