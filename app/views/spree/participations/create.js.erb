@@ -3,7 +3,7 @@ $(".contest").html("<%=j render :partial => 'spree/shared/participation_confirm'
 
 
 $("#share").click(function(e){
-    var urlpost = <%= @participation.contest %>
+    var urlpost = <%= contest_url(@participation.contest) %>
     e.preventDefault();
     FB.ui({
         method: 'share',
