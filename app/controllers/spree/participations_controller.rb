@@ -8,24 +8,28 @@ module Spree
     end
 
     def create
-      puts "aaaaaaaa"
       @contest = Spree::Contest.find(params[:contest_id])
       unless params[:terms]
-        flash[:notice] = "vous n'avez pas accepté les termes"
-        puts "pas de term"
+        flash[:notice] = "Vous n'avez pas accepté les termes"
         redirect_to(:back) and return
 
       end
+
       @participation = Spree::Participation.new(participation_params)
       @participation.subscribed = !(params[:subscribed].blank?)
       @participation.contest = @contest
 
 
-      unless @participation.save
-        puts "unless"
-        flash[:notice] = "le formulaire a été mal rempli ou le email est déjà entré."
+      unless verify_recaptcha(model: @participation)
+        flash[:notice] = "Vous devez remplir le recaptcha."
         redirect_to(:back) and return
       end
+
+      unless @participation.save
+        flash[:notice] = "Le formulaire a été mal rempli ou le email est déjà entré."
+        redirect_to(:back) and return
+      end
+
       respond_to do |format|
         format.html {}
         format.js {render :layout => false}
