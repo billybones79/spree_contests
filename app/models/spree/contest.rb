@@ -46,6 +46,10 @@ module Spree
 
     end
 
+    def self.active_contest
+       contest = Spree::Contest.where("date_begin < NOW()").where("date_end >= NOW()").order(:date_begin).last()
+    end
+
     def to_csv
       CSV.generate do |csv|
         csv << Spree::Participation.column_names
