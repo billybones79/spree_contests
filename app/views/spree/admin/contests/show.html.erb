@@ -1,4 +1,56 @@
 <%= button_link_to Spree.t(:edit_contest), edit_admin_contest_path(@contest), { :class => "btn-success", :icon => 'add', :id => 'admin_edit_contest' } %>
+<%= button_link_to Spree.t(:select_winner), admin_select_winner_path(@contest), { :class => "btn-success", :icon => 'add' } %>
+<%= button_link_to Spree.t(:csv ), admin_contest_path(@contest, format: "csv"), { :class => "btn-success", :icon => 'add', :id => 'admin_edit_contest' } %>
+
+
+<% if @contest.selected_winner %>
+    <div class ="alert alert-info" >
+        <div class="row">
+          <div class="col-md-8" data-hook="admin_product_form_left">
+            <%= Spree.t(:selected_winner) %> :
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" data-hook="admin_product_form_left">
+            <%= label :name, Spree.t(:name) %> :
+            <%= @contest.selected_winner.name %>
+          </div>
+
+          <div class="col-md-4" data-hook="admin_product_form_left">
+            <%= label :email, Spree.t(:email) %> :
+            <%= @contest.selected_winner.email %>
+          </div>
+
+        </div>
+    </div>
+<% end %>
+
+<br/>
+
+<div class ="alert alert-info" >
+  <div class="row">
+    <div class="col-md-8" data-hook="admin_product_form_left">
+      <%= Spree.t(:contest_info) %> :
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= label :subscription_no, Spree.t(:subscription_no) %> :
+      <%= @contest.subscription_number %>
+    </div>
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= label :opt_in_no, Spree.t(:opt_in_no) %> :
+      <%= @contest.opt_in_number %>
+    </div>
+
+    <div class="col-md-4" data-hook="admin_product_form_left">
+      <%= label :opt_in_rate, Spree.t(:opt_in_rate) %> :
+      <%= @contest.opt_in_rate %> %
+    </div>
+
+  </div>
+</div>
+
 
 <% if (@participations = @contest.participations.page(params[:page])).any? %>
     <table class="table" id='listing_stock_movements'>
@@ -14,8 +66,6 @@
         <th><%= Spree.t(:zip) %></th>
         <th><%= Spree.t(:infolettre) %></th>
 
-        <th class="actions"></th>
-
       </tr>
       </thead>
       <tbody>
@@ -25,11 +75,6 @@
             <td><%= participation.email %></td>
             <td><%= participation.zip %></td>
             <td><%= participation.subscribed ? "oui" : "non" %></td>
-            <td>
-               <%= link_to 'Destroy', admin_contest_participation_path(@contest, participation),
-                           data: {:confirm => 'Are you sure?'}, :method => :delete %>
-            </td>
-
 
           </tr>
       <% end %>

@@ -7,7 +7,10 @@ Spree::Core::Engine.routes.draw do
 
   get 'participation/:id/subscribe', :to => 'participation#subscribe', :as => :subscribe
 
+
   namespace :admin do
+    get "/contests/:id/select_winner" => 'contests#select_winner', as: :select_winner
+
     resources :contests do
       resources :participation
     end
