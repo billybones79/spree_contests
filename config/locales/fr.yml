@@ -1,0 +1,5 @@
+fr:
+  spree:
+    opt_in_no: Nombre d'abonnement a l'infolettre
+    opt_in_rate: Taux d'abonnement a l'infolettre
+    subscription_no: Nombre d'inscriptions au concours

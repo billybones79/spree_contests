@@ -1,0 +1,5 @@
+en:
+  spree:
+    opt_in_no: opt in count
+    opt_in_rate: opt in rate
+    subscription_no: Total subscriptions
