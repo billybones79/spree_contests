@@ -3,7 +3,12 @@ module Spree
 
     respond_to :js, :html
     def show
-      @contest = Spree::Contest.find(params[:id])
+      if params[:id]
+       @contest = Spree::Contest.find(params[:id])
+      else
+        @contest = Spree::Contest.order(:date_end).last
+      end
+
       unless @contest.date_begin < Date.today && @contest.date_end >=Date.today
         redirect_to(root_path) and return
       end
